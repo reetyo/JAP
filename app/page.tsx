@@ -1,15 +1,15 @@
+
 import {loadWords} from '../lib/loadWord'
 import {Word} from '../lib/loadWord'
+import DynamicPage from '@/components/dynamicPage';
 
 export default async function Page() {
   const words:Word[] = await getData();
+
   return (
-    <ul>
-      {words.map((word:Word) => (
-        <li key={word.index}>{word.reading}</li>
-      ))}
-    </ul>
-  )}
+    DynamicPage({words})
+  )
+}
 
 async function getData() : Promise<Word[]> {
   // Call an external API endpoint to get posts
